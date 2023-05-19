@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title addComment
+    // STYLESHEET
+    link(type='text/css', rel='stylesheet', href='/stylesheet/3dhop.css')
+  body
+    header Note
+    .FullNote
+      div
+        | Creation DT:
+        div #{creation_dt}
+        | Header:
+        div #{header}
+      div
+        | Content:
+        div #{content}
+      div
+        | Coordinates:
+        div [#{cor_x} , #{cor_y} , #{cor_z}]

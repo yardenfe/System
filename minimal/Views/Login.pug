@@ -1,0 +1,31 @@
+head
+  meta(charset='UTF-8')
+  title HomePage
+  link(rel='stylesheet', href="stylesheet/3dhop.css")
+  script(src='https://use.fontawesome.com/a6f0361695.js', defer)
+  script(src='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css', defer)
+body
+  nav(class="topnav")
+    a(class="navbar-brand", href='/')
+        img(class= "logo" src='/Images/glass.jpeg' alt='Logo')
+  .container-LogIn
+    .title
+       header Login And Explore Together
+    form(class="loginForm" name='LogIn' action='/log_in_check' method='post')
+      .form
+        label(for='username_login')
+        br
+        input(type='email' id="username_login", name="username_login", placeholder='Email')
+        br
+        br
+        label(for='password_login')
+        br
+        input(type='password' id="password_login", name="password_login", placeholder='Password')
+        br
+        br
+        br
+        input(type='submit' value='Log In')
+        br
+        .create-account
+          | No account?
+          a(href='/SignUp') Create one

@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title addComment
+    // STYLESHEET
+    link(type="text/css", rel="stylesheet", href="../static/stylesheet/3dhop.css")
+  body
+    header Add Note
+    .CommentForm
+      form(name='addNote' action='/addNoteToDB' method='post')
+        label(for="header") Header:
+        br
+        input#header(type="header", name="header" required)
+        br
+        label(for="content") Content:
+        br
+        input#content(type="content", name="content" required)
+        br
+        br
+        input(type='submit' value='Save')

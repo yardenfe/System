@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+  head
+      meta(charset="UTF-8")
+      title Project
+      // STYLESHEET
+      link(type="text/css", rel="stylesheet", href="/stylesheet/3dhop.css")
+  body
+        header Models
+        a(href="/Upload3dModel")
+            button.add-review-button Upload a New 3D Model
+        .attach_container
+            .attach_grid-container
+                each model in modellist
+                    .grid-item
+                        .projectName #{model.url}
+                        .projectDescription #{model.description}
+                        a(href="/FullModel/" + model.url)
+                            button.add-review-button view model
+                        .fas.fa-arrow-right
+        header Documents
+        a(href="/CreateProject")
+            button.add-review-button Upload a New Document
+        .attach_container
+            .attach_grid-container
+              each document in documentlist
+                  .grid-item
+                      .projectName #{document.url}
+                      .projectDescription #{document.description}
+                      //a(href="/documentDetails/" + document.url)
+                      a(href="/documentDetails")
+                          button.add-review-button view document
+                              //i.fas.fa-arrow-right
+                  //  a(href=)
+                    button.add-review-button Edit Settings
+                      i.fas.fa-arrow-right
+        header Imageries
+        a(href="/CreateProject")
+          button.add-review-button Upload a New Image
+        .attach_container
+            .attach_grid-container
+              each imagery in imagerylist
+                  .grid-item
+                      .projectName #{imagery.url}
+                      .projectDescription #{imagery.description}
+                      a(href="/FullModel/" + imagery.url)
+                          button.add-review-button view imagery
+                              //i.fas.fa-arrow-right
+                  //  a(href=)
+                    button.add-review-button Edit Settings
+                      i.fas.fa-arrow-right

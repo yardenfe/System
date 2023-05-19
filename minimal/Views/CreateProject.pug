@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title CreateProject
+    // STYLESHEET
+    link(type="text/css", rel="stylesheet", href="/stylesheet/3dhop.css")
+  body
+    header Create a New Project
+    .ProjectForm
+      form(class="newProjectForm" name='NewProject' action='/insertNewProject' onsubmit='return ValidForm()' method='post')
+
+        label(for="name") Name:
+        br
+        input#name(type="name", name="name")
+        br
+        br
+        label(for="description") Description:
+        br
+        input#description(type="description", name="description")
+        br
+        br
+        label(for="research_field") Research Field:
+        br
+        input#research_field(type="research_field", name="research_field")
+        br
+        br
+        br
+        input(type='submit' value='Save')
+

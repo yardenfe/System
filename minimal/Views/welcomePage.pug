@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Welcome
+    // STYLESHEET
+    link(type='text/css', rel='stylesheet', href='stylesheet/3dhop.css')
+  body
+    header welcome  #{name}
+
+    a(class="ProjectViewButton" href='/yourProjects')
+      button.add-review-button View Your Projects
+    a(class="NewProjectButton" href="/CreateProject")
+      button.add-review-button Create a New Project

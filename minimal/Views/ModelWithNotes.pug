@@ -1,0 +1,255 @@
+head
+  meta(content='charset=UTF-8')
+  title Main Page
+  // STYLESHEET
+  link( rel='stylesheet', href='/stylesheet/3dhop.css')
+  // SPIDERGL
+  script( src='../js/spidergl.js')
+  // JQUERY
+  script( src='../js/jquery.js')
+  // PRESENTER
+  script( src='..js/presenter.js')
+  // 3D MODELS LOADING AND RENDERING
+  script( src='../js/nexus.js')
+  script( src='../js/ply.js')
+  // TRACKBALLS
+  script( src='../js/trackball_turntable.js')
+  script( src='../js/trackball_turntable_pan.js')
+  script( src='../js/trackball_pantilt.js')
+  script( src='../js/trackball_sphere.js')
+  // UTILITY
+  script( src='../js/init.js')
+  body
+    #3dhop.tdhop(onmousedown='if (event.preventDefault) event.preventDefault()')
+      #tdhlg
+      |
+      #toolbar
+        img#home(title='Home', src='/skins/dark/home.png')
+        br
+        // ZOOM
+        img#zoomin(title='Zoom In', src='/skins/dark/zoomin.png')
+        br
+        img#zoomout(title='Zoom Out', src='/skins/dark/zoomout.png')
+        br
+        // ZOOM
+        // LIGHTING
+        img#lighting_off(title='Enable Lighting', src='/skins/dark/lighting_off.png', style='position:absolute; visibility:hidden;')
+        img#lighting(title='Disable Lighting', src='/skins/dark/lighting.png')
+        br
+        // LIGHTING
+        // LIGHT
+        img#light_on(title='Disable Light Control', src='/skins/dark/lightcontrol_on.png', style='position:absolute; visibility:hidden;')
+        img#light(title='Enable Light Control', src='/skins/dark/lightcontrol.png')
+        br
+        // LIGHT
+        // MEASURE
+        img#measure_on(title='Disable Measure Tool', src='/skins/dark/measure_on.png', style='position:absolute; visibility:hidden;')
+        img#measure(title='Enable Measure Tool', src='/skins/dark/measure.png')
+        br
+        // MEASURE
+        // POINT PICKING
+        img#pick_on(title='Disable PickPoint Mode', src='/skins/dark/pick_on.png', style='position:absolute; visibility:hidden;')
+        img#pick(title='Enable PickPoint Mode', src='/skins/dark/pick.png')
+        br
+        // POINT PICKING
+        // SECTIONS
+        img#sections_on(title='Disable Plane Sections', src='/skins/dark/sections_on.png', style='position:absolute; visibility:hidden;')
+        img#sections(title='Enable Plane Sections', src='/skins/dark/sections.png')
+        br
+        // SECTIONS
+        // COLOR
+        img#color_on(title='Disable Solid Color', src='/skins/dark/color_on.png', style='position:absolute; visibility:hidden;')
+        img#color(title='Enable Solid Color', src='/skins/dark/color.png')
+        br
+        // COLOR
+        // CAMERA
+        img#perspective(title='Perspective Camera', src='/skins/dark/perspective.png', style='position:absolute; visibility:hidden;')
+        img#orthographic(title='Orthographic Camera', src='/skins/dark/orthographic.png')
+        br
+        // CAMERA
+        // SCREENSHOT
+        img#screenshot(title='Save Screenshot', src='/skins/dark/screenshot.png')
+        br
+        // SCREENSHOT
+        // FULLSCREEN
+        img#full_on(title='Exit Full Screen', src='/skins/dark/full_on.png', style='position:absolute; visibility:hidden;')
+        img#full(title='Full Screen', src='/skins/dark/full.png')
+        // FULLSCREEN
+        // ADD COMMENT
+        div
+            img#comment(title='Add Comment', src='/skins/dark/comment.png')
+      // ADD COMMENT
+      // onclick- open add comment page to uplaod comment!!!!!!!!!!!!
+      // MEASURE
+      #measure-box.output-box
+        | Measured length
+        hr
+        span#measure-output.output-text(onmousedown='event.stopPropagation()') 0.0
+      // MEASURE
+      // POINT PICKING
+      #pickpoint-box.output-box
+        | XYZ picked point
+        hr
+        span#pickpoint-output.output-text(onmousedown='event.stopPropagation()') [ 0 , 0 , 0 ]
+      // POINT PICKING
+      // SECTIONS
+      #sections-box.output-box
+        table.output-table(onmousedown='event.stopPropagation()')
+          tbody
+            tr
+              td Plane
+              td Position
+              td Flip
+            | &#x9;
+            tr
+              td
+                img#xplane_on(title='Disable X Axis Section', src='/skins/icons/sectionX_on.png', onclick='sectionxSwitch()', style='position:absolute; visibility:hidden; border:1px inset;')
+                | &#x9;&#x9;&#x9;
+                img#xplane(title='Enable X Axis Section', src='/skins/icons/sectionX.png', onclick='sectionxSwitch()')
+                br
+              | &#x9;&#x9;
+              td
+                input#xplaneSlider.output-input(type='range', title='Move X Axis Section Position')
+              | &#x9;&#x9;
+              td
+                input#xplaneFlip.output-input(type='checkbox', title='Flip X Axis Section Direction')
+            | &#x9;
+            tr
+              td
+                img#yplane_on(title='Disable Y Axis Section', src='/skins/icons/sectionY_on.png', onclick='sectionySwitch()', style='position:absolute; visibility:hidden; border:1px inset;')
+                | &#x9;&#x9;&#x9;
+                img#yplane(title='Enable Y Axis Section', src='/skins/icons/sectionY.png', onclick='sectionySwitch()')
+                br
+              | &#x9;&#x9;
+              td
+                input#yplaneSlider.output-input(type='range', title='Move Y Axis Section Position')
+              | &#x9;&#x9;
+              td
+                input#yplaneFlip.output-input(type='checkbox', title='Flip Y Axis Section Direction')
+            | &#x9;
+            tr
+              td
+                img#zplane_on(title='Disable Z Axis Section', src='/skins/icons/sectionZ_on.png', onclick='sectionzSwitch()', style='position:absolute; visibility:hidden; border:1px inset;')
+                | &#x9;&#x9;&#x9;
+                img#zplane(title='Enable Z Axis Section', src='/skins/icons/sectionZ.png', onclick='sectionzSwitch()')
+                br
+              | &#x9;&#x9;
+              td
+                input#zplaneSlider.output-input(type='range', title='Move Y Axis Section Position')
+              | &#x9;&#x9;
+              td
+                input#zplaneFlip.output-input(type='checkbox', title='Flip Z Axis Section Direction')
+        table.output-table(onmousedown='event.stopPropagation()', style='text-align:right;')
+          tbody
+            tr
+              td
+                | Show planes
+                input#showPlane.output-input(type='checkbox', title='Show Section Planes', style='bottom:-3px;')
+              | &#x9;
+              td
+                | Show edges
+                input#showBorder.output-input(type='checkbox', title='Show Section Edges', style='bottom:-3px;')
+        //SECTIONS
+        #allComments
+          p this is comment
+            .title Notes
+            each n in res
+              .note
+                a(href='/FullNote/'+n.Id)
+                  .header n.Header
+                .content n.Content
+              br
+
+          // when click on it a new window open display the full comment
+          |
+    canvas#draw-canvas(style='background-image: url(skins/backgrounds/light.jpg)')
+    script(type='text/javascript').
+      var presenter = null;
+      function setup3dhop() {
+      presenter = new Presenter("draw-canvas");
+      presenter.setScene({
+      meshes: {
+      "mesh_1" : { url: 'https://res.cloudinary.com/dwxlduhe0/image/upload/v1682680100/Final/lomwesrryoaa58xt25op.ply'}
+      },
+      modelInstances : {
+      "model_1" : {
+      mesh  : "mesh_1",
+      color : [0.8, 0.7, 0.75]
+      }
+      },
+      trackball: {
+      type : TurntablePanTrackball,
+      trackOptions : {
+      startPhi: 35.0,
+      startTheta: 15.0,
+      startDistance: 2.5,
+      minMaxPhi: [-180, 180],
+      minMaxTheta: [-30.0, 70.0],
+      minMaxDist: [0.5, 3.0]
+      }
+      }
+      });
+      //--MEASURE--
+      presenter._onEndMeasurement = onEndMeasure;
+      //--MEASURE--
+      //--POINT PICKING--
+      presenter._onEndPickingPoint = onEndPick;
+      //--POINT PICKING--
+      //--SECTIONS--
+      sectiontoolInit();
+      //--SECTIONS--
+      }
+      function actionsToolbar(action) {
+      if(action=='home') presenter.resetTrackball();
+      //--FULLSCREEN--
+      else if(action=='full'  || action=='full_on') fullscreenSwitch();
+      //--FULLSCREEN--
+      //--ZOOM--
+      else if(action=='zoomin') presenter.zoomIn();
+      else if(action=='zoomout') presenter.zoomOut();
+      //--ZOOM--
+      //--LIGHTING--
+      else if(action=='lighting' || action=='lighting_off') { presenter.enableSceneLighting(!presenter.isSceneLightingEnabled()); lightingSwitch(); }
+      //--LIGHTING--
+      //--LIGHT--
+      else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
+      //--LIGHT--
+      //--CAMERA--
+      else if(action=='perspective' || action=='orthographic') { presenter.toggleCameraType(); cameraSwitch(); }
+      //--CAMERA--
+      //--COLOR--
+      else if(action=='color' || action=='color_on') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
+      //--COLOR--
+      //--MEASURE--
+      else if(action=='measure' || action=='measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
+      //--MEASURE--
+      //--POINT PICKING--
+      else if(action=='pick' || action=='pick_on') { presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch(); }
+      //--POINT PICKING--
+      //--SCREENSHOT--
+      else if(action=='screenshot') presenter.saveScreenshot();
+      //--SCREENSHOT--
+      //--SECTIONS--
+      else if(action=='sections' || action=='sections_on') { sectiontoolReset(); sectiontoolSwitch(); }
+      //--SECTIONS--
+      }
+      //--MEASURE--
+      function onEndMeasure(measure) {
+      // measure.toFixed(2) sets the number of decimals when displaying the measure
+      // depending on the model measure units, use "mm","m","km" or whatever you have
+      $('#measure-output').html(measure.toFixed(2) + "mm");
+      }
+      //--MEASURE--
+      //--PICKPOINT--
+      function onEndPick(point) {
+      // .toFixed(2) sets the number of decimals when displaying the picked point
+      var x = point[0].toFixed(2);
+      var y = point[1].toFixed(2);
+      var z = point[2].toFixed(2);
+      $('#pickpoint-output').html("[ "+x+" , "+y+" , "+z+" ]");
+      }
+      //--PICKPOINT--
+      $(document).ready(function(){
+      init3dhop();
+      setup3dhop();});
+

@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Projects
+    // STYLESHEET
+    link(type="text/css", rel="stylesheet", href="stylesheet/3dhop.css")
+  body
+    header Projects
+    .container
+      .grid-container
+        each file in filesList
+          .grid-item
+            .projectName #{file.name}
+            .projectDescription #{file.description}
+            .projectCreationDT #{file.creation_dt}
+            a(href="/Project_Attach/" + file.id)
+              button.add-review-button View Project
+                //i.fas.fa-arrow-right
+          //  a(href=)
+            button.add-review-button Edit Settings
+              i.fas.fa-arrow-right
+
+        .grid-item2
+        .grid-item3
+        .grid-item4
+
+
